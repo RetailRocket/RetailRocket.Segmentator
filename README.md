@@ -14,7 +14,8 @@
 ## Сценарий проведения A/B теста с помощью Retail Rocket Segmentator
 
 1. Файл `retailrocket.segmentator.js` сохраняется в директорию сайта и подключается внутри `<head>`, например так: 
-	`<script type="text/javascript" src="/path/to/retailrocket.segmentator.js"></script>`
+
+	<script type="text/javascript" src="/path/to/retailrocket.segmentator.js"></script>
 
 2. Сразу после подключения файла размещается код
 
