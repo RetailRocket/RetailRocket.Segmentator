@@ -14,26 +14,26 @@
 ## Сценарий проведения A/B теста с помощью Retail Rocket Segmentator
 
 * Файл `retailrocket.segmentator.js` сохраняется в директорию сайта и подключается внутри `<head>`, например так: 
-
-	`<script type="text/javascript" src="/path/to/retailrocket.segmentator.js"></script>`
-
+```
+	<script type="text/javascript" src="/path/to/retailrocket.segmentator.js"></script>
+```
 * Сразу после подключения файла размещается код
-
+```
 	<script type="text/javascript">
 		var numberOfSegments = 2;
 		retailrocket.segmentator.getVisitorSegment(numberOfSegments);
 	</script>
-
+```
 * После того, как пользователь отнесен на сегмент, необходимо показать ему соответствующий вариант сайта/страницы.
 Возможные варианты:
 	* Переадресация на URL альтернативный вариант страницы
-
+```
 	<script type="text/javascript">
 		if(retailrocket.segmentator.getVisitorSegment(numberOfSegments)===1 && document.location.pathname==="path/to/pageBeingTested.html") {
 			window.location = "http://yourwebsite.com/path/to/alternative.html";
 		}
 	</script>
-	
+```	
 	* Отображение одного из вариантов кнопки (или любого другого элемента интерфейса). Для этого все вариации тестируемого элемента интерфейса выводятся на страницу со стилем `display:none`, а затем, в зависимости от того, в какой сегмент попал пользователь, один из скрытых элементов меняет стиль на `display:block`
 
 	<script type="text/javascript">
