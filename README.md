@@ -30,17 +30,18 @@
 
 * После того, как пользователь отнесен на сегмент, необходимо показать ему соответствующий вариант сайта/страницы.
 Возможные варианты:
-	* Переадресация на URL альтернативный вариант страницы
+	1 Переадресация на URL альтернативный вариант страницы
 
 ```
 	<script type="text/javascript">
-		if(retailrocket.segmentator.getVisitorSegment(numberOfSegments)===1 && document.location.pathname==="path/to/pageBeingTested.html") {
+		var visitorSegment = retailrocket.segmentator.getVisitorSegment(numberOfSegments);
+		if(visitorSegment===1 && document.location.pathname==="path/to/pageBeingTested.html") {
 			window.location = "http://yourwebsite.com/path/to/alternative.html";
 		}
 	</script>
 ```	
 
-	* Отображение одного из вариантов кнопки (или любого другого элемента интерфейса). Для этого все вариации тестируемого элемента интерфейса выводятся на страницу со стилем `display:none`, а затем, в зависимости от того, в какой сегмент попал пользователь, один из скрытых элементов меняет стиль на `display:block`
+	2 Отображение одного из вариантов кнопки (или любого другого элемента интерфейса). Для этого все вариации тестируемого элемента интерфейса выводятся на страницу со стилем `display:none`, а затем, в зависимости от того, в какой сегмент попал пользователь, один из скрытых элементов меняет стиль на `display:block`
 
 ```
 	<script type="text/javascript">
