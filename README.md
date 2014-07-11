@@ -45,15 +45,14 @@
 
 ```
 	<script type="text/javascript">
-		if(retailrocket.segmentator.getVisitorSegment(numberOfSegments)===0) {
-			$(function(){
+		var visitorSegment = retailrocket.segmentator.getVisitorSegment(numberOfSegments);
+		$(function() {
+			if(visitorSegment == 0) {
 				$.("button_ver1").css('display','block');  // на сайте выше по коду должна быть подключена библиотека jQuery
-			});
-		} elseif (retailrocket.segmentator.getVisitorSegment(numberOfSegments)===1){
-			$(function(){
+			} else if (visitorSegment == 1){
 				$.("button_ver2").css('display','block');  // на сайте выше по коду должна быть подключена библиотека jQuery
-			});
-		}
+			}
+		});
 	</script>
 ````
 
