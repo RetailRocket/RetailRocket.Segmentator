@@ -33,7 +33,7 @@ retailrocket.segmentator = (function () {
       var visitorSegmentRecord = rrLibrary.getCookie(visitorSegmenRecordCookieName);
         
       if (!visitorSegmentRecord || visitorSegmentRecord.split(":")[0] != nSegment) {  
-        visitorSegmentRecord = nSegment + ":" + (new Date().getTime() % nSegment);  
+        visitorSegmentRecord = nSegment + ":" + ((Math.round(new Date().getTime() / 1000)) % nSegment); 
       }  
         
       rrLibrary.setCookie(visitorSegmenRecordCookieName, visitorSegmentRecord, rrLibrary.daysToSecond(option.expireInDay || 60), "/");  
