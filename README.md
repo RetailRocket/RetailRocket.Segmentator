@@ -64,7 +64,7 @@
 <script type="text/javascript" src="/path/to/retailrocket.segmentator.js"></script>
 <script type="text/javascript">
 	var variation;
-        var numberOfSegments = 2;
+	var numberOfSegments = 2;
         
 	$(function () {
 	    var visitorSegment = retailrocket.segmentator.getVisitorSegment(numberOfSegments);
@@ -88,7 +88,7 @@
 ```
 <script type="text/javascript" src="/path/to/retailrocket.segmentator.js"></script>
 <script type="text/javascript">
-        var numberOfSegments = 2;
+	var numberOfSegments = 2;
 	var visitorSegment = retailrocket.segmentator.getVisitorSegment(numberOfSegments);
 	if (visitorSegment === 1 && document.location.pathname === "path/to/oldVersion.html") {
     		window.location = "http://yourwebsite.com/path/to/newVersion.html";
