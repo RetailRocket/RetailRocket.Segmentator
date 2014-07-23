@@ -8,7 +8,7 @@
 	var numberOfSegments = 2;
 	retailrocket.segmentator.getVisitorSegment(numberOfSegments);
 
-Результатом работы кода будет номер сегмента (начиная с 0), в который попал пользователь. Принадлежность пользователя к сегменту сохраняется в cookie на 2 месяца при каждом срабатывании кода.
+Результатом работы кода будет номер сегмента (начиная с 1), в который попал пользователь. Принадлежность пользователя к сегменту сохраняется в cookie на 2 месяца при каждом срабатывании кода.
 
 
 ## Сценарий проведения A/B теста с помощью Retail Rocket Segmentator
@@ -16,7 +16,7 @@
 1) Файл `retailrocket.segmentator.js` сохраняется в директорию сайта и подключается внутри `<head>`, например так: 
 
 ```
-	<script type="text/javascript" src="/path/to/retailrocket.segmentator.js"></script>
+<script type="text/javascript" src="/path/to/retailrocket.segmentator.js"></script>
 ```
 
 2) Сразу после подключения файла размещается код
@@ -47,9 +47,9 @@
 <script type="text/javascript">
 	var visitorSegment = retailrocket.segmentator.getVisitorSegment(numberOfSegments);
 	$(function() {
-		if(visitorSegment == 0) {
+		if(visitorSegment == 1) {
 			$.("button_ver1").css('display','block');  // на сайте выше по коду должна быть подключена библиотека jQuery
-		} else if (visitorSegment == 1){
+		} else if (visitorSegment == 2){
 			$.("button_ver2").css('display','block');  // на сайте выше по коду должна быть подключена библиотека jQuery
 		}
 	});
@@ -64,14 +64,15 @@
 <script type="text/javascript" src="/path/to/retailrocket.segmentator.js"></script>
 <script type="text/javascript">
 	var variation;
-
+        var numberOfSegments = 2;
+        
 	$(function () {
 	    var visitorSegment = retailrocket.segmentator.getVisitorSegment(numberOfSegments);
-	    if (visitorSegment == 0) {
-	        $.("button_ver1").css('display', 'block');
+	    if (visitorSegment == 1) {
+	        $.("button_ver1").css('display', 'block'); // на сайте выше по коду должна быть подключена библиотека jQuery
 	        variation = 'Variation 1';
-	    } else if (visitorSegment == 1) {
-	        $.("button_ver2").css('display', 'block');
+	    } else if (visitorSegment == 2) {
+	        $.("button_ver2").css('display', 'block'); // на сайте выше по коду должна быть подключена библиотека jQuery
 	        variation = 'Variation 2';
 	    }
 	});
@@ -87,10 +88,11 @@
 ```
 <script type="text/javascript" src="/path/to/retailrocket.segmentator.js"></script>
 <script type="text/javascript">
+        var numberOfSegments = 2;
 	var visitorSegment = retailrocket.segmentator.getVisitorSegment(numberOfSegments);
 	if (visitorSegment === 1 && document.location.pathname === "path/to/oldVersion.html") {
     		window.location = "http://yourwebsite.com/path/to/newVersion.html";
-	} else if (visitorSegment === 0 && document.location.pathname === "path/to/oldVersion.html") {
+	} else if (visitorSegment === 2 && document.location.pathname === "path/to/oldVersion.html") {
     	var yaParams = {
         	ab_test: 'Старая версия'
     	};
@@ -100,7 +102,7 @@
         		ab_test: 'Новая версия'
     		};
 	}
-	else if(visitorSegment === 0 && document.location.pathname === "/path/to/newVersion.html") {
+	else if(visitorSegment === 2 && document.location.pathname === "/path/to/newVersion.html") {
     		window.location = "http://yourwebsite.com/path/to/oldVersion.html";
 	}	
 </script>
