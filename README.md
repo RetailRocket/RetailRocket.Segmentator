@@ -48,9 +48,9 @@
 	var visitorSegment = retailrocket.segmentator.getVisitorSegment(numberOfSegments);
 	$(function() {
 		if(visitorSegment == 1) {
-			$.("button_ver1").css('display','block');  // на сайте выше по коду должна быть подключена библиотека jQuery
+			$.(".button_ver1").css('display','block');  // на сайте выше по коду должна быть подключена библиотека jQuery
 		} else if (visitorSegment == 2){
-			$.("button_ver2").css('display','block');  // на сайте выше по коду должна быть подключена библиотека jQuery
+			$.(".button_ver2").css('display','block');  // на сайте выше по коду должна быть подключена библиотека jQuery
 		}
 	});
 </script>
@@ -69,10 +69,10 @@
 	$(function () {
 	    var visitorSegment = retailrocket.segmentator.getVisitorSegment(numberOfSegments);
 	    if (visitorSegment == 1) {
-	        $.("button_ver1").css('display', 'block'); // на сайте выше по коду должна быть подключена библиотека jQuery
+	        $.(".button_ver1").css('display', 'block'); // на сайте выше по коду должна быть подключена библиотека jQuery
 	        variation = 'Variation 1';
 	    } else if (visitorSegment == 2) {
-	        $.("button_ver2").css('display', 'block'); // на сайте выше по коду должна быть подключена библиотека jQuery
+	        $.(".button_ver2").css('display', 'block'); // на сайте выше по коду должна быть подключена библиотека jQuery
 	        variation = 'Variation 2';
 	    }
 	});
