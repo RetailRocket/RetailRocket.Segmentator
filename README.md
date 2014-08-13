@@ -63,11 +63,11 @@
 ```
 <script type="text/javascript" src="/path/to/retailrocket.segmentator.js"></script>
 <script type="text/javascript">
-
+	var numberOfSegments = 2;
+	
 	var visitorSegment = retailrocket.segmentator.getVisitorSegment(numberOfSegments);
 	var variation = 'Variation ' + visitorSegment;
 	
-	var numberOfSegments = 2;
 	$(function () {
 	    
 	    if (visitorSegment == 1) {
