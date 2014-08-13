@@ -24,7 +24,7 @@
 ```
 <script type="text/javascript">
 	var numberOfSegments = 2;
-	retailrocket.segmentator.getVisitorSegment(numberOfSegments);
+	var visitorSegment = retailrocket.segmentator.getVisitorSegment(numberOfSegments);
 </script>
 ```
 
@@ -63,17 +63,17 @@
 ```
 <script type="text/javascript" src="/path/to/retailrocket.segmentator.js"></script>
 <script type="text/javascript">
-	var variation;
+
+	var visitorSegment = retailrocket.segmentator.getVisitorSegment(numberOfSegments);
+	var variation = 'Variation ' + visitorSegment;
+	
 	var numberOfSegments = 2;
-        
 	$(function () {
-	    var visitorSegment = retailrocket.segmentator.getVisitorSegment(numberOfSegments);
+	    
 	    if (visitorSegment == 1) {
 	        $.(".button_ver1").css('display', 'block'); // на сайте выше по коду должна быть подключена библиотека jQuery
-	        variation = 'Variation 1';
 	    } else if (visitorSegment == 2) {
 	        $.(".button_ver2").css('display', 'block'); // на сайте выше по коду должна быть подключена библиотека jQuery
-	        variation = 'Variation 2';
 	    }
 	});
 </script>
