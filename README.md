@@ -35,7 +35,7 @@
 ```	
 <script type="text/javascript">
 	var visitorSegment = retailrocket.segmentator.getVisitorSegment(numberOfSegments);
-	if(visitorSegment===1 && document.location.pathname==="path/to/pageBeingTested.html") {
+	if(visitorSegment==1 && document.location.pathname=="path/to/pageBeingTested.html") {
 		window.location = "http://yourwebsite.com/path/to/alternative.html";
 	}
 </script>
@@ -90,19 +90,19 @@
 <script type="text/javascript">
 	var numberOfSegments = 2;
 	var visitorSegment = retailrocket.segmentator.getVisitorSegment(numberOfSegments);
-	if (visitorSegment === 1 && document.location.pathname === "path/to/oldVersion.html") {
+	if (visitorSegment == 1 && document.location.pathname == "path/to/oldVersion.html") {
     		window.location = "http://yourwebsite.com/path/to/newVersion.html";
-	} else if (visitorSegment === 2 && document.location.pathname === "path/to/oldVersion.html") {
+	} else if (visitorSegment == 2 && document.location.pathname == "path/to/oldVersion.html") {
     	var yaParams = {
         	ab_test: 'Старая версия'
     	};
 	}
-	else if(visitorSegment === 1 && document.location.pathname === "/path/to/newVersion.html") {
+	else if(visitorSegment == 1 && document.location.pathname == "/path/to/newVersion.html") {
     		var yaParams = {
         		ab_test: 'Новая версия'
     		};
 	}
-	else if(visitorSegment === 2 && document.location.pathname === "/path/to/newVersion.html") {
+	else if(visitorSegment == 2 && document.location.pathname == "/path/to/newVersion.html") {
     		window.location = "http://yourwebsite.com/path/to/oldVersion.html";
 	}	
 </script>
