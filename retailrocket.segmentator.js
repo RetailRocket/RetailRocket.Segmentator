@@ -3,28 +3,44 @@ var retailrocket = window["retailrocket"] || {};
 retailrocket.segmentator = (function () {
     var visitorSegmenRecordCookieName = "rr-VisitorSegment";
 
-    var rrLibrary = {
-        getCookie: function (cName) {
-            var i, x, y, arRcookies = document.cookie.split(";");
-            for (i = 0; i < arRcookies.length; i++) {
-                x = arRcookies[i].substr(0, arRcookies[i].indexOf("="));
-                y = arRcookies[i].substr(arRcookies[i].indexOf("=") + 1);
-                x = x.replace(/^\s+|\s+$/g, "");
-                if (x == cName) {
-                    return unescape(y);
-                }
+    function getCookie(cName) {
+        var i, x, y, arRcookies = document.cookie.split(";");
+        for (i = 0; i < arRcookies.length; i++) {
+            x = arRcookies[i].substr(0, arRcookies[i].indexOf("="));
+            y = arRcookies[i].substr(arRcookies[i].indexOf("=") + 1);
+            x = x.replace(/^\s+|\s+$/g, "");
+            if (x == cName) {
+                return unescape(y);
             }
-            return null;
-        },
+        }
+        return null;
+    }
+
+    function setCookie(cName, value, expireInSecond, path) {
+        var exdate = new Date();
+        exdate.setSeconds(exdate.getSeconds() + expireInSecond);
+        var cValue = escape(value) + ((expireInSecond == null) ? "" : "; expires=" + exdate.toUTCString()) + (";path=" + (path || "/"));
+        document.cookie = cName + "=" + cValue;
+    }
+
+    function setRootCookie(cName, value, expireInSecond) {
+        var hostname = location.hostname;
+        var subDomains = hostname.split('.');
+
+        for (var i = 1; i <= subDomains.length; i++) {
+            var domain = subDomains.slice(subDomains.length - i).join(".");
+            setCookie(cName, value, expireInSecond, "/", domain);
+            if (getCookie(cName) == value)
+                break;
+        }
+    }
+
+    var rrLibrary = {
+        getCookie: getCookie,
         daysToSecond: function (days) {
             return days * 24 * 60 * 60;
         },
-        setCookie: function (cName, value, expireInSecond, path) {
-            var exdate = new Date();
-            exdate.setSeconds(exdate.getSeconds() + expireInSecond);
-            var cValue = escape(value) + ((expireInSecond == null) ? "" : "; expires=" + exdate.toUTCString()) + (";path=" + (path || "/"));
-            document.cookie = cName + "=" + cValue;
-        }
+        setRootCookie: setRootCookie
     };
 
     function randomInt(min, max) {
@@ -40,7 +56,7 @@ retailrocket.segmentator = (function () {
                 visitorSegmentRecord = nSegment + ":" + randomInt(1, nSegment);
             }
 
-            rrLibrary.setCookie(visitorSegmenRecordCookieName, visitorSegmentRecord, rrLibrary.daysToSecond(option.expireInDay || 60), "/");
+            rrLibrary.setRootCookie(visitorSegmenRecordCookieName, visitorSegmentRecord, rrLibrary.daysToSecond(option.expireInDay || 60), "/");
             return visitorSegmentRecord.split(":")[1];
         }
     };
