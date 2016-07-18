@@ -16,7 +16,7 @@ retailrocket.segmentator = (function () {
         return null;
     }
 
-    setCookie = function (cName, value, expireInSecond, path, domain) {
+    function setCookie(cName, value, expireInSecond, path, domain) {
         var exdate = new Date();
         exdate.setSeconds(exdate.getSeconds() + expireInSecond);
 
