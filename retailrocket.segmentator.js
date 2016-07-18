@@ -16,10 +16,11 @@ retailrocket.segmentator = (function () {
         return null;
     }
 
-    function setCookie(cName, value, expireInSecond, path) {
+    setCookie = function (cName, value, expireInSecond, path, domain) {
         var exdate = new Date();
         exdate.setSeconds(exdate.getSeconds() + expireInSecond);
-        var cValue = escape(value) + ((expireInSecond == null) ? "" : "; expires=" + exdate.toUTCString()) + (";path=" + (path || "/"));
+
+        var cValue = escape(value || "") + ((expireInSecond == null) ? "" : "; expires=" + exdate.toUTCString()) + (";path=" + (path || "/")) + (domain ? ";domain=" + punycode.toASCII(domain) : "");
         document.cookie = cName + "=" + cValue;
     }
 
